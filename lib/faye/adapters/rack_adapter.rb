@@ -110,7 +110,7 @@ module Faye
       @server.process(message, false) do |replies|
         response = Faye.to_json(replies)
         response = "#{ jsonp }(#{ response });" if request.get?
-        headers['Content-Length'] = response.bytesize.to_s unless request.env[HTTP_X_NO_CONTENT_LENGTH]
+        #headers['Content-Length'] = response.bytesize.to_s unless request.env[HTTP_X_NO_CONTENT_LENGTH]
         debug 'Returning ?', response
         callback.call [200, headers, [response]]
       end
